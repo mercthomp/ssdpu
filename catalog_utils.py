@@ -5,7 +5,7 @@ __all__ = ['read_mpcorb', 'read_sdss_moc', 'read_astorb', 'read_lcdb']
 
 def _convert_designation(x):
     # Match astorb designation to MOC designation.
-    x.name = str(x.name).rstrip(' ').lstrip(' ').replace(' ', '_')
+    x.Name = str(x.Name).rstrip(' ').lstrip(' ').replace(' ', '_')
     return x
 
 def read_mpcorb(filename='MPCORB.DAT', header=True):
@@ -33,7 +33,7 @@ def read_mpcorb(filename='MPCORB.DAT', header=True):
              'Omega', 'inc', 'e', 'meanDailymo','a','reference', 
              '#Obs', '#Opp', 'yr_1st&last_Obs','r.m.s', 
              'coarsePerts', 'precisePerts', 'computer', 
-              'name','lastObs']
+              'Name','lastObs']
     colspecs = [(0,7),(8,13),(14,19),(20,25),(26,35),(37,46),
                 (48,57),(59,68),(70,79),(80,91),(92,103),(108,116),
                 (117,122),(123,126),(127,136),(137,141), 
@@ -66,7 +66,7 @@ def read_sdss_moc(filename='ADR4.dat'):
            'time', 'ra', 'dec', 'l', 'b', 'phi',
            'vmu', 'vmuerr', 'vnu', 'vnuerr', 'vl', 'vb',
            'u', 'uerr', 'g', 'gerr', 'r', 'rerr', 'i', 'ierr', 'z', 'zerr',
-           'sdssa', 'aerr', 'V', 'B', 'idFlag', 'numberId', 'name',
+           'sdssa', 'aerr', 'V', 'B', 'idFlag', 'numberId', 'Name',
            'detectionCount', 'totalCount', 'sdss_flags',
            'calcRA', 'calcDec', 'calcAppMag', 'helioDistance', 'geoDistance', 'phase',
            'catalogId', 'H', 'G1', 'obsArc', 'epoch', 'a', 'e', 'inc', 'Omega', 'argPeri', 
@@ -92,7 +92,7 @@ def read_astorb(filename='astorb.dat'):
     -------
     pandas.DataFrame
     """
-    names=['#', 'name', 'computer', 'H', 'G1', 'B-V',
+    names=['#', 'Name', 'computer', 'H', 'G1', 'B-V',
            'diameter_IRAS_km', 'classification_IRAS',
            'planet_crossing', 'orbit_comp', 'survey', 'mpc_crit', 'lowell_obs', 'rank',
            'obsArc', '#Obs', 'epoch', 'meanAnomaly', 'argPeri', 'Omega', 'inc', 'e', 'a',
@@ -127,7 +127,7 @@ def read_lcdb(filename='LC_SUM_PUB.TXT'):
     -------
     pandas.DataFrame
     """
-    names = ['#', 'new', 'name', 'Desig', 'family', 'Csource', 'class', 'Dsource', 
+    names = ['#', 'new', 'Name', 'Desig', 'family', 'Csource', 'class', 'Dsource', 
          'Dflag', 'diameter','Hsource', 'H', 'Hband', 'Asource', 'Albedoflag',  
          'albedo', 'Pflag', 'period', 'Pdescr','Ampflag', 'AmpMin', 'AmpMax', 
          'U', 'notes', 'binary', 'priv' , 'pole', 'sparse', 'widefield']
